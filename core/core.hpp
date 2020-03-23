@@ -17,8 +17,10 @@ class Core {
         Environment *_env;
         IGraphical *_graphs;
         IGame *_game;
+        void *_sharedLib;
+        void *_sharedGame;
     public:
-        Core(std::string toLoad);
+        Core(std::string libName);
         ~Core();
         void setEnv(Environment *toSet);
         void setGraph(IGraphical *toSet);
@@ -26,6 +28,7 @@ class Core {
         Environment *getEnv() const { return _env; };
         IGraphical *getGraphs() const { return _graphs; };
         IGame *getGame() const { return _game; };
+        void loadGame(std::string gameName);
 };
 
 #endif /* !CORE_HPP_ */

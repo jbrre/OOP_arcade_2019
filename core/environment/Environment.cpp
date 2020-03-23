@@ -29,7 +29,7 @@ void Environment::addEvent(std::string type, std::vector<float> values)
     _events->push_back(event);
 }
 
-bool Environment::isEvent(std::string type, Environment::event_t *event)
+bool Environment::isEvent(std::string type, Environment::event_t *event) const
 {
     for (auto i = _events->begin(); i != _events->end(); i ++) {
         if (type == i->type) {
