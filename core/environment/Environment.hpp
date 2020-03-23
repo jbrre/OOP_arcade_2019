@@ -8,7 +8,9 @@
 #ifndef ENVIRONMENT_HPP_
 #define ENVIRONMENT_HPP_
 
-#include "basics.hpp"
+#include <string>
+#include <vector>
+#include <map>
 
 class Environment {
     public:

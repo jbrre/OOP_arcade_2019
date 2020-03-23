@@ -10,10 +10,10 @@
 
 #include "../core/environment/Environment.hpp"
 
-class Igame {
+class IGame {
     protected:
         int _score;
-        Environment *_env
+        Environment *_env;
     public:
         virtual int game() = 0;
         virtual std::map<std::string,Environment::sprite_t> *getSprites() = 0;
