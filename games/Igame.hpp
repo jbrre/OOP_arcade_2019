@@ -19,9 +19,9 @@ class IGame {
         virtual std::map<std::string,Environment::sprite_t> *getSprites() = 0;
         virtual void action() = 0;
         virtual void setEnvironment(Environment *to_set) = 0;
-        virtual const bool isGameOver() const = 0;
-        virtual const int getScore() const = 0;
-        virtual const std::string getGameName() const = 0;
+        virtual bool isGameOver() const = 0;
+        virtual int getScore() const = 0;
+        virtual std::string getGameName() const = 0;
 };
 
 #endif /* !IGAME_HPP_ */
