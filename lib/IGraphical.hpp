@@ -13,6 +13,7 @@
 class IGraphical {
     protected:
         Environment *_env;
+        std::string _libName;
     public:
         virtual void display() = 0;
         virtual std::string getLibName() const = 0;
