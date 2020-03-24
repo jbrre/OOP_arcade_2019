@@ -12,11 +12,9 @@ CXX		= g++ -shared -fPIC -g
 CXXFLAGS	= -W -Wall -Wextra
 CXXFLAGS	+= -I include/
 
-NAMENCURSE	= ../arcade_ncurses.so
+NAMENCURSE	= ../lib_arcade_ncurses.so
 
-NAMESFML	= ../arcade_sfml.so
-
-NAMESDL	= lib_arcade_sdl.so
+NAMESFML	= ../lib_arcade_sfml.so
 
 SRCSNCURSE	= srcs/libncurses.cpp
 
