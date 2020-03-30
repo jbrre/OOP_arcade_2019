@@ -22,13 +22,15 @@ class Snake : public IGame {
         bool isGameOver() const;
         int getScore() const {return (_score);};
         std::string getGameName() const {return ("snake");};
-        void stepOnce(direction toGo);
+        void stepOnce();
         void placeApple();
         void updateMap();
+        void setDirection(direction _newDir);
         void printMap(); // debug function;
     private:
         std::vector<std::vector<square_status>> _snakeMap;
         std::vector<pos_s> _snakePos;
+        direction _snakeDirection;
 };
 
 #endif /* !SNAKE_HPP_ */

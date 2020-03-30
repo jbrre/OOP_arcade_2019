@@ -44,6 +44,39 @@ void Snake::updateMap(void)
     }
 }
 
+void Snake::stepOnce(void)
+{
+    int x_save = this->_snakePos[0].x;
+    int y_save = this->_snakePos[0].y;
+    if (_snakeDirection == RIGHT)
+        this->_snakePos[0].y += 1;
+    else if (_snakeDirection == LEFT)
+        this->_snakePos[0].y -= 1;
+    else if (_snakeDirection == DOWN)
+        this->_snakePos[0].x += 1;
+    else if (_snakeDirection == UP)
+        this->_snakePos[0].x -= 1;
+    for (int i = this->_snakePos.size(); i > 1; i--) {
+        this->_snakePos[i].x = this->_snakePos[i-1].x;
+        this->_snakePos[i].y = this->_snakePos[i-1].y;
+    }
+    this->_snakePos[1].x = x_save;
+    this->_snakePos[1].y = y_save;
+}
+
+void Snake::setDirection(direction newDir)
+{
+    if (_snakeDirection == DOWN && newDir == UP)
+        return;
+    if (_snakeDirection == UP && newDir == DOWN)
+        return;
+    if (_snakeDirection == LEFT && newDir == RIGHT)
+        return;
+    if (_snakeDirection == RIGHT && newDir == LEFT)
+        return;
+    _snakeDirection = newDir;
+}
+
 void Snake::printMap(void) // debug
 {
     for (int i = 0; i < this->_snakeMap.size(); i++)
