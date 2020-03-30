@@ -3,3 +3,4 @@ a.out
 *.o
 arcade
 *.so
+main_test.cpp
