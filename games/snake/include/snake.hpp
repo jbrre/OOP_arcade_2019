@@ -24,6 +24,7 @@ class Snake : public IGame {
         std::string getGameName() const {return ("snake");};
         void stepOnce(direction toGo);
         void placeApple();
+        void updateMap();
         void printMap(); // debug function;
     private:
         std::vector<std::vector<square_status>> _snakeMap;

@@ -17,14 +17,31 @@ Snake::Snake(Environment *toSet)
         for (int j = 0; j < this->_snakeMap[i].size(); j++)
             this->_snakeMap[i][j] = EMPTY;
     }
-    this->_snakeMap[8][8] = SNAKE_HEAD;
-    this->_snakeMap[8][7] = SNAKE_BODY;
-    this->_snakeMap[8][6] = SNAKE_BODY;
+    _snakePos.resize(3);
+    this->_snakePos[0].x = 8;
+    this->_snakePos[0].y = 8;
+    this->_snakePos[1].x = 8;
+    this->_snakePos[1].y = 7;
+    this->_snakePos[2].x = 8;
+    this->_snakePos[2].y = 6;
+    this->updateMap();
 }
 
 int Snake::game(void)
 {
     return (0);
+}
+
+void Snake::updateMap(void)
+{
+    for (int i = 0; i < MAP_SIZE; i++)
+        for (int j = 0; j < this->_snakeMap[i].size(); j++)
+            if (this->_snakeMap[i][j] == SNAKE_BODY || this->_snakeMap[i][j] == SNAKE_HEAD)
+                this->_snakeMap[i][j] = EMPTY;
+    this->_snakeMap[this->_snakePos[0].x][this->_snakePos[0].y] = SNAKE_HEAD;
+    for (int i = 1; i < this->_snakePos.size(); i++) {
+        this->_snakeMap[this->_snakePos[i].x][this->_snakePos[i].y] = SNAKE_BODY;
+    }
 }
 
 void Snake::printMap(void) // debug
