@@ -26,6 +26,7 @@ class Snake : public IGame {
         void placeApple();
         void updateMap();
         void setDirection(direction _newDir);
+        void upgradeSize();
         void printMap(); // debug function;
     private:
         std::vector<std::vector<square_status>> _snakeMap;

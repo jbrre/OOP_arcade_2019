@@ -64,6 +64,32 @@ void Snake::stepOnce(void)
     this->_snakePos[1].y = y_save;
 }
 
+void Snake::upgradeSize(void)
+{
+    pos_s to_push;
+    int x = this->_snakePos[this->_snakePos.size() - 1].x;
+    int y = this->_snakePos[this->_snakePos.size() - 1].y;
+
+    if (y > 0 && this->_snakeMap[x][y-1] == EMPTY) {
+        to_push.x = x;
+        to_push.y = y - 1;
+        _snakePos.push_back(to_push);
+    } else if (y < MAP_SIZE && this->_snakeMap[x][y+1] == EMPTY) {
+        to_push.x = x;
+        to_push.y = y + 1;
+        _snakePos.push_back(to_push);
+    } else if (x > 0 && this->_snakeMap[x-1][y] == EMPTY) {
+        to_push.x = x - 1;
+        to_push.y = y;
+        _snakePos.push_back(to_push);
+    } else if (x < MAP_SIZE && this->_snakeMap[x+1][y] == EMPTY) {
+        to_push.x = x + 1;
+        to_push.y = y;
+        _snakePos.push_back(to_push);
+    }
+    this->updateMap();
+}
+
 void Snake::setDirection(direction newDir)
 {
     if (_snakeDirection == DOWN && newDir == UP)
