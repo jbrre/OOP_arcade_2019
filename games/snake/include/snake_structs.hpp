@@ -10,6 +10,13 @@
 
 #define MAP_SIZE 17
 
+enum square_status {
+    EMPTY = 0,
+    APPLE,
+    SNAKE_HEAD,
+    SNAKE_BODY
+};
+
 enum direction {
     RIGHT,
     LEFT,

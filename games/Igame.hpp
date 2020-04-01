@@ -10,16 +10,8 @@
 
 #include "../core/environment/Environment.hpp"
 
-enum square_status {
-    EMPTY = 0,
-    APPLE,
-    SNAKE_HEAD,
-    SNAKE_BODY
-};
-
 class IGame {
     protected:
-        std::vector<std::vector<square_status>> _gameMap;
         int _score;
         Environment *_env;
     public:
