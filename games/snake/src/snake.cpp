@@ -99,17 +99,16 @@ void Snake::upgradeSize(void)
     this->updateMap();
 }
 
-void Snake::setDirection(direction newDir)
+void Snake::checkDirection(void)
 {
-    if (_snakeDirection == DOWN && newDir == UP)
-        return;
-    if (_snakeDirection == UP && newDir == DOWN)
-        return;
-    if (_snakeDirection == LEFT && newDir == RIGHT)
-        return;
-    if (_snakeDirection == RIGHT && newDir == LEFT)
-        return;
-    _snakeDirection = newDir;
+    if (_env->isEvent("KEY_UP") && _snakeDirection != DOWN)
+        _snakeDirection = UP;
+    else if (_env->isEvent("KEY_DOWN") && _snakeDirection != UP)
+        _snakeDirection = DOWN;
+    else if (_env->isEvent("KEY_RIGHT") && _snakeDirection != LEFT)
+        _snakeDirection = RIGHT;
+    else if (_env->isEvent("KEY_LEFT") && _snakeDirection != RIGHT)
+        _snakeDirection = LEFT;
 }
 
 void Snake::printMap(void) // debug

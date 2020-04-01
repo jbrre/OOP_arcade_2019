@@ -25,7 +25,7 @@ class Snake : public IGame {
         void stepOnce();
         void placeApple();
         void updateMap();
-        void setDirection(direction _newDir);
+        void checkDirection();
         void upgradeSize();
         void printMap(); // debug function;
     private:
