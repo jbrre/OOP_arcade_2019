@@ -34,6 +34,10 @@ int Snake::game(void)
 
 void Snake::updateMap(void)
 {
+    if (isGameOver()) {
+        std::cerr << "Error: tried update map while game over." << std::endl;
+        return;
+    }
     for (int i = 0; i < MAP_SIZE; i++)
         for (int j = 0; j < this->_snakeMap[i].size(); j++)
             if (this->_snakeMap[i][j] == SNAKE_BODY || this->_snakeMap[i][j] == SNAKE_HEAD)
@@ -48,6 +52,11 @@ void Snake::stepOnce(void)
 {
     int x_save = this->_snakePos[0].x;
     int y_save = this->_snakePos[0].y;
+
+    if (isGameOver()) {
+        std::cerr << "Error: tried to step game over." << std::endl;
+        return;
+    }
     if (_snakeDirection == RIGHT)
         this->_snakePos[0].y += 1;
     else if (_snakeDirection == LEFT)
@@ -145,5 +154,11 @@ void Snake::action()
 
 bool Snake::isGameOver() const
 {
-    return (true);
+    if (_snakePos[0].x < 0 || _snakePos[0].y < 0)
+        return (true);
+    if (_snakePos[0].x >= MAP_SIZE || _snakePos[0].y >= MAP_SIZE)
+        return (true);
+    else if (_snakeMap[_snakePos[0].x][_snakePos[0].y] == SNAKE_BODY)
+        return (true);
+    return (false);
 }
