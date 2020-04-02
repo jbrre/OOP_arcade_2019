@@ -8,12 +8,12 @@
 #ifndef SNAKE_HPP_
 #define SNAKE_HPP_
 
-#include "../IGame.hpp"
+#include "IGame.hpp"
 #include "snake_structs.hpp"
 
 class Snake : public IGame {
     public:
-        Snake(Environment *env);
+        Snake();
         ~Snake() = default;
         int game();
         std::map<std::string,Environment::sprite_t> *getSprites();

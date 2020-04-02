@@ -5,16 +5,15 @@
 ** snake
 */
 
-#include "../include/snake.hpp"
+#include "snake.hpp"
 #include <iostream> // for debug
 
-Snake::Snake(Environment *toSet)
+Snake::Snake()
 {
-    _env = toSet;
     _gameMap.resize(MAP_SIZE);
     for (int i = 0; i < MAP_SIZE; i++) {
         _gameMap[i].resize(MAP_SIZE);
-        for (int j = 0; j < this->_gameMap[i].size(); j++)
+        for (unsigned int j = 0; j < this->_gameMap[i].size(); j++)
             this->_gameMap[i][j] = EMPTY;
     }
     _snakePos.resize(3);
@@ -39,11 +38,11 @@ void Snake::updateMap(void)
         return;
     }
     for (int i = 0; i < MAP_SIZE; i++)
-        for (int j = 0; j < this->_gameMap[i].size(); j++)
+        for (unsigned int j = 0; j < this->_gameMap[i].size(); j++)
             if (this->_gameMap[i][j] == SNAKE_BODY || this->_gameMap[i][j] == SNAKE_HEAD)
                 this->_gameMap[i][j] = EMPTY;
     this->_gameMap[this->_snakePos[0].x][this->_snakePos[0].y] = SNAKE_HEAD;
-    for (int i = 1; i < this->_snakePos.size(); i++) {
+    for (unsigned int i = 1; i < this->_snakePos.size(); i++) {
         this->_gameMap[this->_snakePos[i].x][this->_snakePos[i].y] = SNAKE_BODY;
     }
 }
@@ -113,9 +112,9 @@ void Snake::checkDirection(void)
 
 void Snake::printMap(void) // debug
 {
-    for (int i = 0; i < this->_gameMap.size(); i++)
+    for (unsigned int i = 0; i < this->_gameMap.size(); i++)
     {
-        for (int j = 0; j < this->_gameMap[i].size(); j++)
+        for (unsigned int j = 0; j < this->_gameMap[i].size(); j++)
         {
             std::cout << this->_gameMap[i][j] << " ";
         }
@@ -125,8 +124,8 @@ void Snake::printMap(void) // debug
 
 void Snake::placeApple()
 {
-    for (int i = 0; i < this->_gameMap.size(); i++)
-        for (int j = 0; j < this->_gameMap[i].size(); j++)
+    for (unsigned int i = 0; i < this->_gameMap.size(); i++)
+        for (unsigned int j = 0; j < this->_gameMap[i].size(); j++)
             if (this->_gameMap[i][j] == APPLE)
                 return;
     int i = 0;
@@ -160,4 +159,12 @@ bool Snake::isGameOver() const
     else if (_gameMap[_snakePos[0].x][_snakePos[0].y] == SNAKE_BODY)
         return (true);
     return (false);
+}
+
+extern "C"
+{
+    IGame *create_game()
+    {
+        return new Snake();
+    }
 }

@@ -10,17 +10,6 @@
 
 #include "../core/environment/Environment.hpp"
 
-enum square_status {
-    EMPTY = 0,
-    APPLE,
-    SNAKE_HEAD,
-    SNAKE_BODY,
-    WALL,
-    PLAYER,
-    GHOST,
-    POINT
-};
-
 class IGame {
     protected:
         int _score;

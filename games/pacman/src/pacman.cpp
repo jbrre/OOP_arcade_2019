@@ -5,13 +5,12 @@
 ** pacman
 */
 
-#include "../include/pacman.hpp"
+#include "pacman.hpp"
 #include <iostream> // for debug
 
-Pacman::Pacman(Environment *toSet)
+Pacman::Pacman()
 {
     _score = 0;
-    _env = toSet;
     _gameMap = mapBase;
     _pacmanDirection = RIGHT;
     _pacmanPos.x = 4;
@@ -71,12 +70,20 @@ std::map<std::string,Environment::sprite_t> *Pacman::getSprites()
 
 void Pacman::printMap(void) // debug
 {
-    for (int i = 0; i < this->_gameMap.size(); i++)
+    for (unsigned int i = 0; i < this->_gameMap.size(); i++)
     {
-        for (int j = 0; j < this->_gameMap[i].size(); j++)
+        for (unsigned int j = 0; j < this->_gameMap[i].size(); j++)
         {
             std::cout << this->_gameMap[i][j] << "";
         }
         std::cout << std::endl;
+    }
+}
+
+extern "C"
+{
+    IGame *create_game()
+    {
+        return new Pacman();
     }
 }

@@ -12,7 +12,7 @@
 
 class Pacman : public IGame {
     public:
-        Pacman(Environment *env);
+        Pacman();
         ~Pacman() = default;
         int game();
         std::map<std::string,Environment::sprite_t> *getSprites();

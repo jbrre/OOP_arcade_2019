@@ -11,7 +11,7 @@
 #define MAP_SIZE 17
 
 #include <vector>
-#include "../IGame.hpp"
+#include "IGame.hpp"
 
 enum direction {
     RIGHT,
