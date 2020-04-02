@@ -34,6 +34,7 @@ class IGame {
         virtual bool isGameOver() const = 0;
         virtual int getScore() const = 0;
         virtual std::string getGameName() const = 0;
+        virtual std::vector<std::vector<square_status>> getGameMap() const = 0;
 };
 
 #endif /* !IGAME_HPP_ */

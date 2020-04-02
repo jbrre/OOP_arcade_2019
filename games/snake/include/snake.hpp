@@ -27,6 +27,7 @@ class Snake : public IGame {
         void updateMap();
         void checkDirection();
         void upgradeSize();
+        std::vector<std::vector<square_status>> getGameMap() const {return (_gameMap);}
         void printMap(); // debug function;
     private:
         std::vector<pos_s> _snakePos;

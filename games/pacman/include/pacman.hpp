@@ -24,6 +24,7 @@ class Pacman : public IGame {
         void stepOnce();
         void updateMap();
         void checkDirection();
+        std::vector<std::vector<square_status>> getGameMap() const {return (_gameMap);}
         void printMap(); // debug function;
     private:
         pos_s _pacmanPos;
