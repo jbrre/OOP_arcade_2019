@@ -5,6 +5,7 @@
 ** libncurses
 */
 
+#include <curses.h>
 #include "libncurses.hpp"
 
 libNCurses::libNCurses()
@@ -18,7 +19,7 @@ libNCurses::~libNCurses()
     return;
 }
 
-void libNCurses::display()
+void libNCurses::display(std::vector<std::vector<square_status>> toDisplay) const
 {
     return;
 }

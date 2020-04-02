@@ -15,9 +15,10 @@ class IGraphical {
         Environment *_env;
         std::string _libName;
     public:
-        virtual void display() = 0;
+        virtual void display(std::vector<std::vector<square_status>> toDisplay) const = 0;
         virtual std::string getLibName() const = 0;
         virtual void setEnvironment(Environment *newEnv) = 0;
+        virtual void menu(void) const = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */
