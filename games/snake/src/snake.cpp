@@ -11,11 +11,11 @@
 Snake::Snake(Environment *toSet)
 {
     _env = toSet;
-    _snakeMap.resize(MAP_SIZE);
+    _gameMap.resize(MAP_SIZE);
     for (int i = 0; i < MAP_SIZE; i++) {
-        _snakeMap[i].resize(MAP_SIZE);
-        for (int j = 0; j < this->_snakeMap[i].size(); j++)
-            this->_snakeMap[i][j] = EMPTY;
+        _gameMap[i].resize(MAP_SIZE);
+        for (int j = 0; j < this->_gameMap[i].size(); j++)
+            this->_gameMap[i][j] = EMPTY;
     }
     _snakePos.resize(3);
     this->_snakePos[0].x = 8;
@@ -39,12 +39,12 @@ void Snake::updateMap(void)
         return;
     }
     for (int i = 0; i < MAP_SIZE; i++)
-        for (int j = 0; j < this->_snakeMap[i].size(); j++)
-            if (this->_snakeMap[i][j] == SNAKE_BODY || this->_snakeMap[i][j] == SNAKE_HEAD)
-                this->_snakeMap[i][j] = EMPTY;
-    this->_snakeMap[this->_snakePos[0].x][this->_snakePos[0].y] = SNAKE_HEAD;
+        for (int j = 0; j < this->_gameMap[i].size(); j++)
+            if (this->_gameMap[i][j] == SNAKE_BODY || this->_gameMap[i][j] == SNAKE_HEAD)
+                this->_gameMap[i][j] = EMPTY;
+    this->_gameMap[this->_snakePos[0].x][this->_snakePos[0].y] = SNAKE_HEAD;
     for (int i = 1; i < this->_snakePos.size(); i++) {
-        this->_snakeMap[this->_snakePos[i].x][this->_snakePos[i].y] = SNAKE_BODY;
+        this->_gameMap[this->_snakePos[i].x][this->_snakePos[i].y] = SNAKE_BODY;
     }
 }
 
@@ -79,19 +79,19 @@ void Snake::upgradeSize(void)
     int x = this->_snakePos[this->_snakePos.size() - 1].x;
     int y = this->_snakePos[this->_snakePos.size() - 1].y;
 
-    if (y > 0 && this->_snakeMap[x][y-1] == EMPTY) {
+    if (y > 0 && this->_gameMap[x][y-1] == EMPTY) {
         to_push.x = x;
         to_push.y = y - 1;
         _snakePos.push_back(to_push);
-    } else if (y < MAP_SIZE && this->_snakeMap[x][y+1] == EMPTY) {
+    } else if (y < MAP_SIZE && this->_gameMap[x][y+1] == EMPTY) {
         to_push.x = x;
         to_push.y = y + 1;
         _snakePos.push_back(to_push);
-    } else if (x > 0 && this->_snakeMap[x-1][y] == EMPTY) {
+    } else if (x > 0 && this->_gameMap[x-1][y] == EMPTY) {
         to_push.x = x - 1;
         to_push.y = y;
         _snakePos.push_back(to_push);
-    } else if (x < MAP_SIZE && this->_snakeMap[x+1][y] == EMPTY) {
+    } else if (x < MAP_SIZE && this->_gameMap[x+1][y] == EMPTY) {
         to_push.x = x + 1;
         to_push.y = y;
         _snakePos.push_back(to_push);
@@ -113,11 +113,11 @@ void Snake::checkDirection(void)
 
 void Snake::printMap(void) // debug
 {
-    for (int i = 0; i < this->_snakeMap.size(); i++)
+    for (int i = 0; i < this->_gameMap.size(); i++)
     {
-        for (int j = 0; j < this->_snakeMap[i].size(); j++)
+        for (int j = 0; j < this->_gameMap[i].size(); j++)
         {
-            std::cout << this->_snakeMap[i][j] << " ";
+            std::cout << this->_gameMap[i][j] << " ";
         }
         std::cout << std::endl;
     }
@@ -125,17 +125,17 @@ void Snake::printMap(void) // debug
 
 void Snake::placeApple()
 {
-    for (int i = 0; i < this->_snakeMap.size(); i++)
-        for (int j = 0; j < this->_snakeMap[i].size(); j++)
-            if (this->_snakeMap[i][j] == APPLE)
+    for (int i = 0; i < this->_gameMap.size(); i++)
+        for (int j = 0; j < this->_gameMap[i].size(); j++)
+            if (this->_gameMap[i][j] == APPLE)
                 return;
     int i = 0;
     int j = 0;
     while (1) {
         i = rand() % MAP_SIZE;
         j = rand() % MAP_SIZE;
-        if (this->_snakeMap[i][j] == EMPTY) {
-            this->_snakeMap[i][j] = APPLE;
+        if (this->_gameMap[i][j] == EMPTY) {
+            this->_gameMap[i][j] = APPLE;
             return;
         }
     }
@@ -157,7 +157,7 @@ bool Snake::isGameOver() const
         return (true);
     if (_snakePos[0].x >= MAP_SIZE || _snakePos[0].y >= MAP_SIZE)
         return (true);
-    else if (_snakeMap[_snakePos[0].x][_snakePos[0].y] == SNAKE_BODY)
+    else if (_gameMap[_snakePos[0].x][_snakePos[0].y] == SNAKE_BODY)
         return (true);
     return (false);
 }
