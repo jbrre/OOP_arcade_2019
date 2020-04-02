@@ -8,7 +8,6 @@
 #ifndef PACMAN_HPP_
 #define PACMAN_HPP_
 
-#include "../IGame.hpp"
 #include "pacman_structs.hpp"
 
 class Pacman : public IGame {
@@ -27,7 +26,6 @@ class Pacman : public IGame {
         void checkDirection();
         void printMap(); // debug function;
     private:
-        std::vector<std::vector<square_status>> _pacmanMap;
         pos_s _pacmanPos;
         direction _pacmanDirection;
 };

@@ -12,7 +12,7 @@ Pacman::Pacman(Environment *toSet)
 {
     _score = 0;
     _env = toSet;
-    _pacmanMap = mapBase;
+    _gameMap = mapBase;
     _pacmanDirection = RIGHT;
     _pacmanPos.x = 4;
     _pacmanPos.y = 5;
@@ -39,13 +39,13 @@ void Pacman::updateMap(void)
         std::cerr << "Error: tried update map while game over." << std::endl;
         return;
     }
-    for (unsigned int i = 0; i < _pacmanMap.size(); i++)
-        for (unsigned int j = 0; j < _pacmanMap[i].size(); j++)
-            if (this->_pacmanMap[i][j] == PLAYER)
-                this->_pacmanMap[i][j] = EMPTY;
-    if (this->_pacmanMap[_pacmanPos.x][_pacmanPos.y] == POINT)
+    for (unsigned int i = 0; i < _gameMap.size(); i++)
+        for (unsigned int j = 0; j < _gameMap[i].size(); j++)
+            if (this->_gameMap[i][j] == PLAYER)
+                this->_gameMap[i][j] = EMPTY;
+    if (this->_gameMap[_pacmanPos.x][_pacmanPos.y] == POINT)
         this->_score += 100;
-    this->_pacmanMap[_pacmanPos.x][_pacmanPos.y] = PLAYER;
+    this->_gameMap[_pacmanPos.x][_pacmanPos.y] = PLAYER;
 }
 
 void Pacman::stepOnce()
@@ -54,13 +54,13 @@ void Pacman::stepOnce()
         std::cerr << "Error: tried to step while game over." << std::endl;
         return;
     }
-    if (_pacmanDirection == RIGHT && _pacmanMap[_pacmanPos.x][_pacmanPos.y + 1] != WALL)
+    if (_pacmanDirection == RIGHT && _gameMap[_pacmanPos.x][_pacmanPos.y + 1] != WALL)
         this->_pacmanPos.y += 1;
-    else if (_pacmanDirection == LEFT && _pacmanMap[_pacmanPos.x][_pacmanPos.y - 1] != WALL)
+    else if (_pacmanDirection == LEFT && _gameMap[_pacmanPos.x][_pacmanPos.y - 1] != WALL)
         this->_pacmanPos.y -= 1;
-    else if (_pacmanDirection == DOWN && _pacmanMap[_pacmanPos.x + 1][_pacmanPos.y] != WALL)
+    else if (_pacmanDirection == DOWN && _gameMap[_pacmanPos.x + 1][_pacmanPos.y] != WALL)
         this->_pacmanPos.x += 1;
-    else if (_pacmanDirection == UP && _pacmanMap[_pacmanPos.x - 1][_pacmanPos.y] != WALL)
+    else if (_pacmanDirection == UP && _gameMap[_pacmanPos.x - 1][_pacmanPos.y] != WALL)
         this->_pacmanPos.x -= 1;
 }
 
@@ -71,11 +71,11 @@ std::map<std::string,Environment::sprite_t> *Pacman::getSprites()
 
 void Pacman::printMap(void) // debug
 {
-    for (int i = 0; i < this->_pacmanMap.size(); i++)
+    for (int i = 0; i < this->_gameMap.size(); i++)
     {
-        for (int j = 0; j < this->_pacmanMap[i].size(); j++)
+        for (int j = 0; j < this->_gameMap[i].size(); j++)
         {
-            std::cout << (char)this->_pacmanMap[i][j] << "";
+            std::cout << this->_gameMap[i][j] << "";
         }
         std::cout << std::endl;
     }

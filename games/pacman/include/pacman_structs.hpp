@@ -11,14 +11,7 @@
 #define MAP_SIZE 17
 
 #include <vector>
-
-enum square_status {
-    EMPTY = ' ',
-    WALL = '#',
-    PLAYER = 'P',
-    GHOST = 'G',
-    POINT = '.'
-};
+#include "../IGame.hpp"
 
 enum direction {
     RIGHT,

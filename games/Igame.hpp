@@ -14,7 +14,11 @@ enum square_status {
     EMPTY = 0,
     APPLE,
     SNAKE_HEAD,
-    SNAKE_BODY
+    SNAKE_BODY,
+    WALL,
+    PLAYER,
+    GHOST,
+    POINT
 };
 
 class IGame {
