@@ -1,0 +1,48 @@
+/*
+** EPITECH PROJECT, 2020
+** OOP_arcade_2019 [WSL: Ubuntu]
+** File description:
+** pacman structs
+*/
+
+#ifndef PACMAN_STRUCTS_HPP
+#define PACMAN_STRUCTS_HPP
+
+#define MAP_SIZE 17
+
+#include <vector>
+
+enum square_status {
+    EMPTY = ' ',
+    WALL = '#',
+    PLAYER = 'P',
+    GHOST = 'G',
+    POINT = '.'
+};
+
+enum direction {
+    RIGHT,
+    LEFT,
+    UP,
+    DOWN,
+};
+
+struct pos_t {
+    int x;
+    int y;
+};
+
+const std::vector<std::vector<square_status>> mapBase {
+    {WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, } , 
+    {WALL, GHOST, POINT, POINT, POINT, POINT, POINT, POINT, POINT, WALL, POINT, POINT, POINT, POINT, POINT, GHOST, POINT, POINT, WALL, } , 
+    {WALL, POINT, WALL, WALL, POINT, WALL, WALL, WALL, POINT, WALL, POINT, WALL, WALL, WALL, POINT, WALL, WALL, POINT, WALL, } , 
+    {WALL, POINT, WALL, WALL, POINT, WALL, WALL, WALL, POINT, WALL, POINT, WALL, WALL, WALL, POINT, WALL, WALL, POINT, WALL, } , 
+    {WALL, POINT, POINT, POINT, POINT, EMPTY, POINT, POINT, POINT, POINT, POINT, POINT, POINT, POINT, POINT, POINT, POINT, POINT, WALL, } , 
+    {WALL, POINT, WALL, WALL, POINT, WALL, POINT, WALL, WALL, WALL, WALL, WALL, POINT, WALL, POINT, WALL, WALL, POINT, WALL, } , 
+    {WALL, POINT, POINT, POINT, POINT, WALL, POINT, POINT, POINT, WALL, GHOST, POINT, POINT, WALL, POINT, GHOST, POINT, POINT, WALL, } , 
+    {WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, }
+};
+
+typedef struct pos_t pos_s;
+
+#endif /* !PACMAN_STRUCTS_HPP */
