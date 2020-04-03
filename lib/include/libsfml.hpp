@@ -19,7 +19,7 @@ class libSFML : public IGraphical {
         void display(std::vector<std::vector<square_status>> toDisplay) const;
         std::string getLibName() const { return (_libName); };
         void setEnvironment(Environment *newEnv) { _env = newEnv; };
-        void menu(void) const {};
+        const std::string menu(void) const {};
     private:
         sf::RenderWindow window;
 };

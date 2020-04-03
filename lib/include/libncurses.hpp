@@ -19,7 +19,8 @@ class libNCurses : public IGraphical {
         void display(std::vector<std::vector<square_status>> toDisplay) const;
         std::string getLibName() const { return (_libName); };
         void setEnvironment(Environment *newEnv) { _env = newEnv; };
-        void menu(void) const;
+        const std::string menu(void) const;
+        void print_menu(std::string ascii[6], std::string pacman[5], int color_s, int color_p) const;
 };
 
 #endif /* !LIBNCURSES_HPP_ */

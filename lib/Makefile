@@ -7,7 +7,7 @@
 
 RM		= rm -f
 
-CXX		= g++ -shared -fPIC -g
+CXX		= g++ -shared -fPIC
 
 CXXFLAGS	= -W -Wall -Wextra
 CXXFLAGS	+= -I include/

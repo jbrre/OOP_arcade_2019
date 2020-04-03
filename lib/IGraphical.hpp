@@ -18,7 +18,9 @@ class IGraphical {
         virtual void display(std::vector<std::vector<square_status>> toDisplay) const = 0;
         virtual std::string getLibName() const = 0;
         virtual void setEnvironment(Environment *newEnv) = 0;
-        virtual void menu(void) const = 0;
+        virtual const std::string menu(void) const = 0;
 };
+
+typedef IGraphical *(*libMaker)();
 
 #endif /* !IGRAPHICAL_HPP_ */
