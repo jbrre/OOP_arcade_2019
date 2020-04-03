@@ -7,7 +7,7 @@
 
 RM		= rm -f
 
-CXX		= g++ -g
+CXX		= g++
 
 CPPFLAGS	=	-I..
 
@@ -29,6 +29,9 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+
+debug: CPPFLAGS += -g3
+debug: fclean all
 
 re:	fclean all
 

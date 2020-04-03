@@ -15,7 +15,7 @@
 class Core {
     private:
         Environment *_env;
-        IGraphical *_graphs;
+        libMaker _graphs;
         IGame *_game;
         void *_sharedLib;
         void *_sharedGame;
@@ -24,11 +24,10 @@ class Core {
         ~Core();
         void setEnv(Environment *toSet);
         void setGraph(IGraphical *toSet);
-        void setGame(IGraphical *toSet);
-        Environment *getEnv() const { return _env; };
-        IGraphical *getGraphs() const { return _graphs; };
-        IGame *getGame() const { return _game; };
         void loadGame(std::string gameName);
+        Environment *getEnv() const { return _env; };
+        IGraphical *getGraphs() const { return this->_graphs(); };
+        IGame *getGame() const { return _game; };
 };
 
 #endif /* !CORE_HPP_ */

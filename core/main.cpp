@@ -10,13 +10,21 @@
 
 int main(int ac, char **av)
 {
-    Core *game;
+    Core *arcade = nullptr;
+    IGraphical *lib = nullptr;
+    IGame *game = nullptr;
 
     if (ac != 2) {
         std::cerr << "Usage: ./arcade lib" << std::endl;
         return (84);
     }
-    game = new Core(av[1]);
-    delete game;
+    arcade = new Core(av[1]);
+    lib = arcade->getGraphs();
+    std::cout << lib->menu() << std::endl;
+    // while (!arcade->getGame()->isGameOver()) {
+    //     arcade->getGraphs()->display(arcade->getGame()->getGameMap());
+    //     arcade->getGame()->action();
+    // }
+    delete arcade;
     return (0);
 }
