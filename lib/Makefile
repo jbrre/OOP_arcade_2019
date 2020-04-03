@@ -10,7 +10,7 @@ RM		= rm -f
 CXX		= g++ -shared -fPIC
 
 CXXFLAGS	= -W -Wall -Wextra
-CXXFLAGS	+= -I include/
+CXXFLAGS	+= -I./include/ -I.
 
 NAMENCURSE	= ../lib_arcade_ncurses.so
 
