@@ -23,7 +23,7 @@ Core::Core(std::string libName)
         std::cerr << "dlsym: " << dlerror() << std::endl;
         exit(84); // to replace with appropriate exception
     }
-    this->_graphs = (IGraphical*)libChecker;
+    this->_graphs = (libMaker)libChecker;
 }
 
 Core::~Core()
