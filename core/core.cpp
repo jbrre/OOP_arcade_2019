@@ -45,5 +45,5 @@ void Core::loadGame(std::string gameName)
         std::cerr << "dlsym: " << dlerror() << std::endl;
         exit(84); // to replace with appropriate exception
     }
-    this->_game = (IGame*)gameChecker;
+    this->_game = (gameMaker)gameChecker;
 }

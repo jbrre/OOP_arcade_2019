@@ -26,4 +26,6 @@ class IGame {
         virtual std::vector<std::vector<square_status>> getGameMap() const = 0;
 };
 
+typedef IGame *(*gameMaker)();
+
 #endif /* !IGAME_HPP_ */
