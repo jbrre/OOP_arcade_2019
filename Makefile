@@ -1,10 +1,9 @@
 ##
 ## EPITECH PROJECT, 2019
-## OOP_arcade_2018
+## OOP_arcade_2019
 ## File description:
 ## Makefile
 ##
-
 
 all	:	
 	make -C ./lib
