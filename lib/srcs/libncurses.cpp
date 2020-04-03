@@ -97,11 +97,14 @@ const std::string libNCurses::menu(void) const
     while (1) {
         this->print_menu( snake, pacman, color_s, color_p);
         key = getch();
-        if (key == KEY_RIGHT) {
+        if (key == '\n' && color_p == 2) {
+            return ("./lib_arcade_nibbler.so");
+        } else if (key == '\n' && color_s == 2) {
+            return ("./lib_arcade_pacman.so");
+        } else if (key == KEY_RIGHT) {
             color_s = 2;
             color_p = 1;
-        }
-        if (key == KEY_LEFT) {
+        } else if (key == KEY_LEFT) {
             color_s = 1;
             color_p = 2;
         }
