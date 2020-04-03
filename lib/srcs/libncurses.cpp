@@ -25,59 +25,58 @@ libNCurses::~libNCurses()
 
 void libNCurses::display(std::vector<std::vector<square_status>> toDisplay) const
 {
-    int y = 10;
+    int y = 0;
+    int z = 0;
     unsigned int i = 0;
     unsigned int j = 0;
 
-    //std::cerr << "ZIZIZIZIZIZI\n" << std::endl;
     clear();
     init_pair(3, COLOR_WHITE, COLOR_BLACK);
     for (; i < toDisplay.size(); i++, y++) {
-        for (; j < toDisplay[i].size(); j++) {
-	    printw("%d", j);
-    	    // if (toDisplay[i][j] == EMPTY) {
-    	    // 	attron(COLOR_PAIR(3));
-    	    //     mvprintw(y, (COLS/2), "J");
-    	    // 	attroff(COLOR_PAIR(3));
-    	    // }
-    	    // if (toDisplay[i][j] == APPLE) {
-    	    // 	attron(COLOR_PAIR(3));
-    	    // 	mvprintw(y, (COLS/2), "o");
-    	    // 	attroff(COLOR_PAIR(3));
-    	    // }
-    	    // if (toDisplay[i][j] == SNAKE_HEAD) {
-    	    // 	attron(COLOR_PAIR(3));
-    	    // 	mvprintw(y, (COLS/2), "p");
-    	    // 	attroff(COLOR_PAIR(3));
-    	    // }
-    	    // if (toDisplay[i][j] == SNAKE_BODY) {
-    	    // 	attron(COLOR_PAIR(3));
-    	    // 	mvprintw(y, (COLS/2), "t");
-    	    // 	attroff(COLOR_PAIR(3));
-    	    // }
-    	    // if (toDisplay[i][j] == WALL) {
-    	    // 	attron(COLOR_PAIR(3));
-    	    // 	mvprintw(y, (COLS/2), "|");
-    	    // 	attroff(COLOR_PAIR(3));
-    	    // }
-    	    // if (toDisplay[i][j] == PLAYER) {
-    	    // 	attron(COLOR_PAIR(3));
-    	    // 	mvprintw(y, (COLS/2), "P");
-    	    // 	attroff(COLOR_PAIR(3));
-    	    // }
-    	    // if (toDisplay[i][j] == GHOST) {
-    	    // 	attron(COLOR_PAIR(3));
-    	    // 	mvprintw(y, (COLS/2), "A");
-    	    // 	attroff(COLOR_PAIR(3));
-    	    // }
-    	    // if (toDisplay[i][j] == POINT) {
-    	    // 	attron(COLOR_PAIR(3));
-    	    // 	mvprintw(y, (COLS/2), "o");
-    	    // 	attroff(COLOR_PAIR(3));
-    	    // }
+        for (; j < toDisplay[i].size(); j++, z++) {
+	    if (toDisplay[i][j] == EMPTY) {
+    	    	attron(COLOR_PAIR(3));
+    	        mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "J");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == APPLE) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "o");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == SNAKE_HEAD) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "p");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == SNAKE_BODY) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8,  "t");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == WALL) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "|");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == PLAYER) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "P");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == GHOST) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "A");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == POINT) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "o");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
         }
-	printw("\n");
 	j = 0;
+	z = 0;
     }
     refresh();
 }
