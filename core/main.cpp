@@ -7,6 +7,7 @@
 
 #include "core.hpp"
 #include <iostream>
+#include <unistd.h>
 
 int main(int ac, char **av)
 {
@@ -20,10 +21,11 @@ int main(int ac, char **av)
     }
     arcade = new Core(av[1]);
     lib = arcade->getGraphs();
-    std::cout << lib->menu() << std::endl;
-    // while (!arcade->getGame()->isGameOver()) {
-    //     arcade->getGraphs()->display(arcade->getGame()->getGameMap());
-    //     arcade->getGame()->action();
+    // arcade->loadGame(lib->menu());
+    // game = arcade->getGame();
+    // while (game->isGameOver()) {
+    //     lib->display(game->getGameMap);
+    //     sleep(1);
     // }
     delete arcade;
     return (0);
