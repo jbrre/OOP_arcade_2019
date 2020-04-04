@@ -21,12 +21,14 @@ int main(int ac, char **av)
     }
     arcade = new Core(av[1]);
     lib = arcade->getGraphs();
-    // arcade->loadGame(lib->menu());
-    // game = arcade->getGame();
-    // while (game->isGameOver()) {
-    //     lib->display(game->getGameMap);
-    //     sleep(1);
-    // }
+    arcade->loadGame(lib->menu());
+    game = arcade->getGame();
+    lib->display(game->getGameMap());
+    while (!(game->isGameOver())) {
+        game->action();
+        lib->display(game->getGameMap());
+        sleep(1);
+    }
     delete arcade;
     return (0);
 }
