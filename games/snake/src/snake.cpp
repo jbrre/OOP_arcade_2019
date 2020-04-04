@@ -95,6 +95,7 @@ void Snake::upgradeSize(void)
         to_push.y = y;
         _snakePos.push_back(to_push);
     }
+    this->_score += 100;
     this->updateMap();
 }
 
