@@ -15,7 +15,7 @@ NAMEPACMAN	= ../lib_arcade_pacman.so
 
 NAMENIBBLER	= ../lib_arcade_nibbler.so
 
-SRCSPACMAN	= pacman/src/pacman.cpp
+SRCSPACMAN	= pacman/src/pacman.cpp ../core/environment/Environment.cpp
 
 SRCSNIBBLER	= snake/src/snake.cpp ../core/environment/Environment.cpp
 

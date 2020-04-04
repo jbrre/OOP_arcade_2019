@@ -22,9 +22,23 @@ int Pacman::game(void)
     return (0);
 }
 
+void Pacman::checkDirection(void)
+{
+    if (_env->isEvent("KEY_UP"))
+        _pacmanDirection = UP;
+    else if (_env->isEvent("KEY_DOWN"))
+        _pacmanDirection = DOWN;
+    else if (_env->isEvent("KEY_RIGHT"))
+        _pacmanDirection = RIGHT;
+    else if (_env->isEvent("KEY_LEFT"))
+        _pacmanDirection = LEFT;
+}
+
 void Pacman::action()
 {
-    return;
+    this->checkDirection();
+    this->stepOnce();
+    this->updateMap();
 }
 
 bool Pacman::isGameOver() const
