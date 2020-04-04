@@ -19,7 +19,7 @@ class libSFML : public IGraphical {
         void display(std::vector<std::vector<square_status>> toDisplay);
         std::string getLibName() const { return (_libName); };
         void setEnvironment(Environment *newEnv) { _env = newEnv; };
-        const std::string menu(void) const {};
+        const std::string menu(void) const {return "./lib_arcade_nibbler.so";};
     private:
         sf::RenderWindow window;
 };
