@@ -12,6 +12,8 @@
 #include "games/IGame.hpp"
 #include "lib/IGraphical.hpp"
 
+#define LOOP_DELAY 500000
+
 class Core {
     private:
         Environment *_env;

@@ -47,3 +47,8 @@ void Core::loadGame(std::string gameName)
     }
     this->_game = (gameMaker)gameChecker;
 }
+
+void Core::setEnv(Environment *toSet)
+{
+    this->_env = toSet;
+}

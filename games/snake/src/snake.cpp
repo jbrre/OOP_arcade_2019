@@ -37,7 +37,7 @@ void Snake::updateMap(void)
         std::cerr << "Error: tried update map while game over." << std::endl;
         return;
     }
-    for (int i = 0; i < MAP_SIZE; i++)
+    for (unsigned int i = 0; i < this->_gameMap.size(); i++)
         for (unsigned int j = 0; j < this->_gameMap[i].size(); j++)
             if (this->_gameMap[i][j] == SNAKE_BODY || this->_gameMap[i][j] == SNAKE_HEAD)
                 this->_gameMap[i][j] = EMPTY;
@@ -147,6 +147,12 @@ std::map<std::string,Environment::sprite_t> *Snake::getSprites()
 
 void Snake::action()
 {
+    this->placeApple();
+    this->checkDirection();
+    this->stepOnce();
+    if (this->_gameMap[_snakePos[0].x][_snakePos[0].y] == APPLE)
+        this->upgradeSize();
+    this->updateMap();
     return;
 }
 
@@ -154,7 +160,7 @@ bool Snake::isGameOver() const
 {
     if (_snakePos[0].x < 0 || _snakePos[0].y < 0)
         return (true);
-    if (_snakePos[0].x >= MAP_SIZE || _snakePos[0].y >= MAP_SIZE)
+    if (_snakePos[0].x >= this->_gameMap.size() - 1 || _snakePos[0].y >= this->_gameMap.size())
         return (true);
     else if (_gameMap[_snakePos[0].x][_snakePos[0].y] == SNAKE_BODY)
         return (true);

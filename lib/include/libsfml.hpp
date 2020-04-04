@@ -16,7 +16,7 @@ class libSFML : public IGraphical {
     public:
         libSFML();
         ~libSFML();
-        void display(std::vector<std::vector<square_status>> toDisplay) const;
+        void display(std::vector<std::vector<square_status>> toDisplay);
         std::string getLibName() const { return (_libName); };
         void setEnvironment(Environment *newEnv) { _env = newEnv; };
         const std::string menu(void) const {};

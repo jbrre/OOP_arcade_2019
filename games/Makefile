@@ -7,7 +7,7 @@
 
 RM		= rm -f
 
-CXX		= g++ -shared -fPIC -g
+CXX		= g++ -shared -fPIC -g3
 
 CXXFLAGS	= -W -Wall -Wextra -I. -I./pacman/include/ -I./snake/include/
 
@@ -17,7 +17,7 @@ NAMENIBBLER	= ../lib_arcade_nibbler.so
 
 SRCSPACMAN	= pacman/src/pacman.cpp
 
-SRCSNIBBLER	= snake/src/snake.cpp
+SRCSNIBBLER	= snake/src/snake.cpp ../core/environment/Environment.cpp
 
 OBJSPACMAN	= $(SRCSPACMAN:.cpp=.o)
 

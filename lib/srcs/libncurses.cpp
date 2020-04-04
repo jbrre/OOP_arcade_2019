@@ -15,6 +15,7 @@ libNCurses::libNCurses()
     initscr();
     keypad(stdscr, TRUE);
     start_color();
+    nodelay(stdscr, TRUE);
     return;
 }
 
@@ -23,13 +24,23 @@ libNCurses::~libNCurses()
     return;
 }
 
-void libNCurses::display(std::vector<std::vector<square_status>> toDisplay) const
+void libNCurses::addKeyToEnv(int key)
+{
+    if (keyboard.count(key)) {
+        this->_env->addEvent(keyboard.find(key)->second);
+    }
+}
+
+void libNCurses::display(std::vector<std::vector<square_status>> toDisplay)
 {
     int y = 0;
     int z = 0;
     unsigned int i = 0;
     unsigned int j = 0;
+    int key = 0;
 
+    key = getch();
+    this->addKeyToEnv(key);
     clear();
     init_pair(3, COLOR_WHITE, COLOR_BLACK);
     for (; i < toDisplay.size(); i++, y++) {
