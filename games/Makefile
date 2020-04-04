@@ -9,10 +9,7 @@ RM		= rm -f
 
 CXX		= g++ -shared -fPIC -g
 
-CXXFLAGS	= -W -Wall -Wextra
-CXXFLAGS	+= -I.
-CXXFLAGS	+= -I./pacman/include/
-CXXFLAGS	+= -I./snake/include/
+CXXFLAGS	= -W -Wall -Wextra -I. -I./pacman/include/ -I./snake/include/
 
 NAMEPACMAN	= ../lib_arcade_pacman.so
 

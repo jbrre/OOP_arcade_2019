@@ -5,6 +5,7 @@
 ** libncurses
 */
 
+#include <iostream>
 #include <ncurses.h>
 #include "libncurses.hpp"
 
@@ -24,31 +25,60 @@ libNCurses::~libNCurses()
 
 void libNCurses::display(std::vector<std::vector<square_status>> toDisplay) const
 {
-    // int y = 10;
+    int y = 0;
+    int z = 0;
+    unsigned int i = 0;
+    unsigned int j = 0;
 
-    // clear();
-    // for (int i = 0; i < toDisplay.size(); i++, y++) {
-    //     for (int j = 0; j < toDisplay[i].size(); j++) {
-    //     if (toDisplay[i][j] == EMPTY)
-    //         mvprintw(y, (COLS/2), ' ');
-    //     else if (toDisplay[i][j] == APPLE)
-    //         mvprintw(y, (COLS/2), 'o');
-    //     else if (toDisplay[i][j] == SNAKE_HEAD)
-    //     mvprintw(y, (COLS/2), 'p');
-    //     else if (toDisplay[i][j] == SNAKE_BODY)
-    //     mvprintw(y, (COLS/2), 't');
-    //     else if (toDisplay[i][j] == WALL)
-    //     mvprintw(y, (COLS/2), '|');
-    //     else if (toDisplay[i][j] == PLAYER)
-    //     mvprintw(y, (COLS/2), 'P');
-    //     else if (toDisplay[i][j] == GHOST)
-    //     mvprintw(y, (COLS/2), 'A');
-    //     else if (toDisplay[i][j] == POINT)
-    //     mvprintw(y, (COLS/2), 'o');
-    // }
-    // }
-    // refresh();
-    // return;
+    clear();
+    init_pair(3, COLOR_WHITE, COLOR_BLACK);
+    for (; i < toDisplay.size(); i++, y++) {
+        for (; j < toDisplay[i].size(); j++, z++) {
+	    if (toDisplay[i][j] == EMPTY) {
+    	    	attron(COLOR_PAIR(3));
+    	        mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "J");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == APPLE) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "o");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == SNAKE_HEAD) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "p");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == SNAKE_BODY) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8,  "t");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == WALL) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "|");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == PLAYER) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "P");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == GHOST) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "A");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+    	    if (toDisplay[i][j] == POINT) {
+    	    	attron(COLOR_PAIR(3));
+    	    	mvprintw((LINES/2) + y - 8, (COLS/2) + z - 8, "o");
+    	    	attroff(COLOR_PAIR(3));
+    	    }
+        }
+	j = 0;
+	z = 0;
+    }
+    refresh();
 }
 
 void libNCurses::print_menu(std::string ascii[6], std::string pacman[5], int color_s, int color_p) const
