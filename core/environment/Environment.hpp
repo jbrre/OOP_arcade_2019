@@ -34,10 +34,11 @@ class Environment {
             std::string text; // Only usefull for text entities
             size_t x;
             size_t y;
+            std::pair<float, float> origin;
             size_t spriteID;
             std::string color;
-            size_t length;
-            size_t width;
+            float length;
+            float width;
         } entity_t;
 
         typedef struct sprite_s {
@@ -51,13 +52,15 @@ class Environment {
             std::vector<float> values;
         } event_t;
 
-        std::map<std::string, entity_t> *getMap() const { return _map; };
+        std::map<std::string, entity_t> *getMap() { return _map; };
+        void addOrUpdateEntity(const entity_t entity);
+        void removeEntity(const std::string name);
         void setSprites(std::map<std::string, sprite_t> *sprites) { _sprites = sprites; };
-        std::map<std::string, sprite_t> *getSprites() const { return _sprites; };
+        std::map<std::string, sprite_t> *getSprites() { return _sprites; };
         
-        std::vector<event_t> *getEvents() const { return _events; };
-        bool isEvent(std::string type, event_t *event = nullptr) const;
-        void addEvent(std::string type, std::vector<float> values = std::vector<float>(0, 0));
+        std::vector<event_t> *getEvents() { return _events; };
+        bool isEvent(const std::string type, event_t *event = nullptr);
+        void addEvent(const std::string type, const std::vector<float> values = std::vector<float>(0, 0));
 
     protected:
     private:
