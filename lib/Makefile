@@ -9,12 +9,12 @@ RM		= rm -f
 
 CXX		= g++ -shared -fPIC
 
-CXXFLAGS	= -W -Wall -Wextra -g3
+CXXFLAGS	= -W -Wall -Wextra
 CXXFLAGS	+= -I./include/ -I.
 
-NAMENCURSE	= ../lib_arcade_ncurses.so
+NAMENCURSE	= lib_arcade_ncurses.so
 
-NAMESFML	= ../lib_arcade_sfml.so
+NAMESFML	= lib_arcade_sfml.so
 
 SRCSNCURSE	= srcs/libncurses.cpp ../core/environment/Environment.cpp
 

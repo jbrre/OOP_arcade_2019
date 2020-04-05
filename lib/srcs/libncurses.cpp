@@ -139,9 +139,9 @@ const std::string libNCurses::menu(void) const
         this->print_menu( snake, pacman, color_s, color_p);
         key = getch();
         if (key == '\n' && color_p == 2) {
-            return ("./lib_arcade_nibbler.so");
+            return ("./games/lib_arcade_nibbler.so");
         } else if (key == '\n' && color_s == 2) {
-            return ("./lib_arcade_pacman.so");
+            return ("./games/lib_arcade_pacman.so");
         } else if (key == KEY_RIGHT) {
             color_s = 2;
             color_p = 1;

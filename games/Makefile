@@ -7,13 +7,13 @@
 
 RM		= rm -f
 
-CXX		= g++ -shared -fPIC -g3
+CXX		= g++ -shared -fPIC
 
 CXXFLAGS	= -W -Wall -Wextra -I. -I./pacman/include/ -I./snake/include/
 
-NAMEPACMAN	= ../lib_arcade_pacman.so
+NAMEPACMAN	= lib_arcade_pacman.so
 
-NAMENIBBLER	= ../lib_arcade_nibbler.so
+NAMENIBBLER	= lib_arcade_nibbler.so
 
 SRCSPACMAN	= pacman/src/pacman.cpp ../core/environment/Environment.cpp
 
