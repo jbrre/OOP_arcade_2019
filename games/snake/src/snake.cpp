@@ -16,13 +16,15 @@ Snake::Snake()
         for (unsigned int j = 0; j < this->_gameMap[i].size(); j++)
             this->_gameMap[i][j] = EMPTY;
     }
-    _snakePos.resize(3);
+    _snakePos.resize(4);
     this->_snakePos[0].x = 8;
     this->_snakePos[0].y = 8;
     this->_snakePos[1].x = 8;
     this->_snakePos[1].y = 7;
     this->_snakePos[2].x = 8;
     this->_snakePos[2].y = 6;
+    this->_snakePos[3].x = 8;
+    this->_snakePos[3].y = 5;
     this->updateMap();
 }
 
